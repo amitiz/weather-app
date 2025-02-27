@@ -13,7 +13,7 @@ body {
   align-items: center;
   justify-content: center;
   min-width: 100vh;
-  background: linear-gradient(#c2f0fc, #a0d7e7);
+  background: linear-gradient(#c2f0fc, #a7dbea);
 }
 
 #root {
@@ -30,15 +30,16 @@ body {
 .search-section .search-form {
   height: 54px;
   width: 100%;
+  position: relative;
 
 }
 
 .search-section .search-form span {
   color: white;
-  top: 50%;
+  top: 30%;
   transform: translateX(-50%);
   position: absolute;
-  left: 16px;
+  left: 20px;
   
 
 }
@@ -123,7 +124,7 @@ body {
 }
 .container {
   max-width: 410px;
-  background: linear-gradient(#184a73,#0f3057);
+  background: linear-gradient(#081826,#0f3057);
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgb(0, 0, 0, 0.1);
