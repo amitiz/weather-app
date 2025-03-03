@@ -1,71 +1,51 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
+import SearchSection from "./components/SearchSection";
+import CurrentWeather from "./components/CurrentWeather";
+import HourlyWeatherItems from "./components/HourlyWeatherItems";
+import { weatherCodes } from "./constants";
 
 function App() {
+  const [currentWeather, setCurrentWeather] = useState({});
+
+  const getWeatherDetails = async (API_URL) => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      console.log(data);
+
+      //from this data get the temperature and description
+      const temperature = Math.floor(data.current.temp_c);
+      const description = data.current.condition.text;
+      const weatherIcon = Object.keys(weatherCodes).find( (icon) =>
+        weatherCodes[icon].includes(data.current.condition.code)
+      );
+      console.log(weatherIcon, "weatherIcon");
+      
+      setCurrentWeather({ temperature, description, weatherIcon });
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="container">
       {/* This is a search section */}
-      <div className="search-section">
-        <form action="" className="search-form">
-          <span class="material-symbols-rounded">search</span>
-          <input
-            type="search"
-            placeholder="Enter a city name"
-            required
-            className="search-input"
-          />
-        </form>
-        {/* put a button here */}
-        <button className="location-button">
-          <span class="material-symbols-rounded">my_location</span>
-        </button>
-      </div>
+      <SearchSection getWeatherDetails={getWeatherDetails} />
       {/* Weather section */}
       <div className="weather-section">
         {/* current weather section */}
-        <div className="current-weather">
-          <img src="icons/clouds.svg" className="weather-icon" />
-          <h2 className="temperature">
-            20 <span>°c</span>
-          </h2>
-          <p className="description">Partly Cloudy</p>
-        </div>
+        <CurrentWeather currentWeather={currentWeather} />
         {/* hourly forecast */}
         <div className="hourly-forecast">
           <ul className="weather-list">
-            <li className="weather-item">
-              <p className="time">00:00</p>
-              <img src="icons/clouds.svg" className="weather-icon" />
-              <p className="temperature">20°c</p>
-            </li>
-            <li className="weather-item">
-              <p className="time">00:00</p>
-              <img src="icons/clouds.svg" className="weather-icon" />
-              <p className="temperature">20°c</p>
-            </li>
-            <li className="weather-item">
-              <p className="time">00:00</p>
-              <img src="icons/clouds.svg" className="weather-icon" />
-              <p className="temperature">20°c</p>
-            </li>
-            <li className="weather-item">
-              <p className="time">00:00</p>
-              <img src="icons/clouds.svg" className="weather-icon" />
-              <p className="temperature">20°c</p>
-            </li>
-            <li className="weather-item">
-              <p className="time">00:00</p>
-              <img src="icons/clouds.svg" className="weather-icon" />
-              <p className="temperature">20°c</p>
-            </li>
-            <li className="weather-item">
-              <p className="time">00:00</p>
-              <img src="icons/clouds.svg" className="weather-icon" />
-              <p className="temperature">20°c</p>
-            </li>
-            
+            <HourlyWeatherItems />
+            <HourlyWeatherItems />
+            <HourlyWeatherItems />
+            <HourlyWeatherItems />
+            <HourlyWeatherItems />
+            <HourlyWeatherItems />
           </ul>
         </div>
       </div>
