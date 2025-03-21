@@ -7,6 +7,7 @@ import HourlyWeatherItems from "./components/HourlyWeatherItems";
 import { weatherCodes } from "./constants";
 
 function App() {
+  const API_KEY = import.meta.env.VITE_API_KEY;
   const [currentWeather, setCurrentWeather] = useState({});
 
   //create state for hourly forecast and pass it to hourlyWeatherItem
@@ -52,6 +53,16 @@ function App() {
       console.log(error);
     }
   };
+
+useEffect( () => {
+  
+  const defaultCity = "Sydney";
+  const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${defaultCity}&days=2`;
+  getWeatherDetails(API_URL, defaultCity);
+},[]);
+
+console.log(hourlyforecast, "hourlyForecast");
+
   return (
     <div className="container">
       {/* This is a search section */}
@@ -63,13 +74,14 @@ function App() {
         {/* hourly forecast */}
         <div className="hourly-forecast">
           <ul className="weather-list">
+            {hourlyforecast.map((hourlyWeather) => (
 
-            <HourlyWeatherItems  />
-            <HourlyWeatherItems />
-            <HourlyWeatherItems />
-            <HourlyWeatherItems />
-            <HourlyWeatherItems />
-            <HourlyWeatherItems />
+            <HourlyWeatherItems 
+            key={hourlyWeather.time_epoch}
+            hourlyWeather={hourlyWeather}
+             />
+          ))}
+            
           </ul>
         </div>
       </div>

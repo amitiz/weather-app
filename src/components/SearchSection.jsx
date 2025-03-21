@@ -12,6 +12,22 @@ const SearchSection = ({getWeatherDetails}) => {
         getWeatherDetails(API_URL);
 
     };
+
+    const handleLocationSearch =() => {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+        const {latitude, longitude} = position.coords;
+        const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=2`;
+        getWeatherDetails(API_URL);
+
+      },
+      () => {
+        alert(
+          "Location access denied. Please enable permission to use this feature"
+        );
+      }
+    );
+    };
   return (
     <div className="search-section">
       <form action="" className="search-form" onSubmit={handleCitySearch} >
@@ -24,7 +40,7 @@ const SearchSection = ({getWeatherDetails}) => {
         />
       </form>
       {/* put a button here */}
-      <button className="location-button">
+      <button className="location-button" onClick={handleLocationSearch} >
         <span className="material-symbols-rounded">my_location</span>
       </button>
     </div>
