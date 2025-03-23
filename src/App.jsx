@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import "./App.css";
-import SearchSection from "./components/SearchSection";
 import CurrentWeather from "./components/CurrentWeather";
 import HourlyWeatherItem from "./components/HourlyWeatherItem";
+import SearchSection from "./components/SearchSection";
 import { weatherCodes } from "./constants";
-import NoResultsDiv from "./components/NoReasultsDiv";
+import NoResultsDiv from "./components/NoResultsDiv";
 
 const App = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -24,6 +23,8 @@ const App = () => {
     });
     setHourlyForecasts(next24HoursData);
   };
+
+  // Fetch weather data from API and update state
   const getWeatherDetails = async (API_URL) => {
     setHasNoResults(false);
     try {
@@ -48,6 +49,7 @@ const App = () => {
       setHasNoResults(true);
     }
   };
+
   // Fetch default city weather data on initial render
   useEffect(() => {
     const defaultCity = "Sydney";
@@ -83,4 +85,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;
