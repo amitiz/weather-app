@@ -1,29 +1,41 @@
-const SearchSection = ({getWeatherDetails}) => {
+const SearchSection = ({ getWeatherDetails, searchInputRef }) => {
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  
+  const handleCitySearch = (e) => {
+    e.preventDefault();
+    const searchInput = e.target.querySelector(".search-input");
+    const API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${searchInput.value}&days=2`;
+    getWeatherDetails(API_URL);
+  };
 
-    const API_KEY = import.meta.env.VITE_API_KEY;
-
-    const handleCitySearch = (e) => {
-        e.preventDefault();
-        const searchInput = e.target.querySelector(".search-input");
-        console.log(searchInput.value);
-        const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${searchInput.value}`;
-        //get the weather details from the entered city 
+  const handleLocationSearch = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=2`;
         getWeatherDetails(API_URL);
+      },
+      () => {
+        alert(
+          "Location access denied. Please enable permission to use this feature"
+        );
+      }
+    );
+  };
 
-    };
   return (
     <div className="search-section">
-      <form action="" className="search-form" onSubmit={handleCitySearch} >
+      <form action="#" className="search-form" onSubmit={handleCitySearch}>
         <span className="material-symbols-rounded">search</span>
         <input
           type="search"
           placeholder="Enter a city name"
-          required
           className="search-input"
+          required
+          ref={searchInputRef}
         />
       </form>
-      {/* put a button here */}
-      <button className="location-button">
+      <button className="location-button" onClick={handleLocationSearch}>
         <span className="material-symbols-rounded">my_location</span>
       </button>
     </div>
