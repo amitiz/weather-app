@@ -1,4 +1,7 @@
 const CurrentWeather = ({ currentWeather }) => {
+  // Use Math.floor to ensure temperature is an integer
+  const temperature = Math.floor(currentWeather.temperature);
+
   return (
     <div className="current-weather">
       <img
@@ -6,9 +9,9 @@ const CurrentWeather = ({ currentWeather }) => {
         className="weather-icon"
       />
       <h2 className="temperature">
-        {currentWeather.temperature} <span>°C</span>
+        {temperature} <span>°C</span> {/* Display fixed temperature in °C */}
       </h2>
-      <p className="description">{currentWeather.description}</p>
+      <p className="description">{currentWeather.description}</p> {/* Weather description */}
     </div>
   );
 };
