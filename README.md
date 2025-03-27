@@ -1,38 +1,28 @@
-##Weather App
-This is a simple weather application built with React and Vite, which fetches and displays weather data, including current weather conditions and a 24-hour forecast, for a specified city. The app uses WeatherAPI to retrieve weather details and displays them in a user-friendly format.
-##Features:
-•	Displays current weather (temperature, description, and weather icon).
-•	Shows hourly forecast for the next 24 hours.
-•	Allows users to search for weather data by city.
-•	Handles errors gracefully with a "No Results" message if the city is not found.
-##Components:
-•	SearchSection: Input field for searching cities.
-•	CurrentWeather: Displays the current weather details.
-•	HourlyWeatherItem: Displays each hourly weather item.
-•	NoResultsDiv: Displays a message when no weather data is found.
-##Setup Instructions:
-1.	Clone the repository:
-git clone < https://github.com/amitiz/weather-app >
-cd <Weather-app>
-2.	Install dependencies using Vite and npm:
+Weather Application
+Overview
+This is a simple weather application that allows users to search for a city and view the current weather conditions along with an hourly forecast for the next 24 hours. The application fetches data from WeatherAPI and is built using React with Vite for fast development.
+
+Features
+Search Functionality: Users can search for any city to get weather details.
+Current Weather Display: Shows temperature, weather description, and an appropriate weather icon.
+Hourly Forecast: Displays hourly weather updates for the next 24 hours.
+Default City: The app loads with the weather details of Sydney by default.
+Error Handling: Displays a message when no results are found.
+Technologies Used
+React (with Hooks for state and effects)
+Vite (for fast builds and development)
+WeatherAPI (for fetching weather data)
+CSS (for styling the UI)
+Installation
+Clone the repository:
+git clone https://github.com/amitiz/weather-app.git
+Navigate to the project folder:
+cd weather-app
+Install dependencies:
 npm install
-3.	Add your WeatherAPI key in a .env file at the root of the project:
-VITE_API_KEY=your-weather-api-key
-4.	Start the development server with Vite:
+Create a .env file in the root directory and add your WeatherAPI key:
+VITE_API_KEY=your_api_key_here
+Start the development server:
 npm run dev
-This will run the application at http://localhost:5173/
-##Technologies:
-•	React
-•	Vite (for fast build and development)
-•	WeatherAPI (to fetch weather data)
-•	CSS for styling
-##How to use
-Open the app in your browser.
-Enter a city name in the search bar and press enter.
-View the current weather and hourly forecast.
-
-##Acknowledgments
-WeatherAPI for providing free weather data.
-React and Vite for making development smooth and efficient.
-
-![image](https://github.com/user-attachments/assets/9184d161-41d3-49df-901a-a891f3523f4a)
+Open the application in your browser at:
+http://localhost:5173
