@@ -2,40 +2,15 @@
 
 ## Overview
 
-This is a simple weather application that allows users to search for a city and view the current weather conditions along with an hourly forecast for the next 24 hours. The application fetches data from [WeatherAPI](https://www.weatherapi.com/) and is built using React with Vite for fast development.
+This is a simple weather application built with React and Vite, which fetches and displays weather data, including current weather conditions and a 24-hour forecast, for a specified city. The app uses WeatherAPI to retrieve weather details and displays them in a user-friendly format.
+
 
 ## Features
 
-- **Search Functionality:** Users can search for any city to get weather details.
-- **Current Weather Display:** Shows temperature, weather description, and an appropriate weather icon.
-- **Hourly Forecast:** Displays hourly weather updates for the next 24 hours.
-- **Default City:** The app loads with the weather details of Sydney by default.
-- **Error Handling:** Displays a message when no results are found.
-
-## Technologies Used
-
-- **React** (with Hooks for state and effects)
-- **Vite** (for fast builds and development)
-- **WeatherAPI** (for fetching weather data)
-- **CSS** (for styling the UI)
-
-## Installation
-
-1. Clone the repository:
-   ```sh
-   git clone # Weather Application
-
-## Overview
-
-This is a simple weather application that allows users to search for a city and view the current weather conditions along with an hourly forecast for the next 24 hours. The application fetches data from [WeatherAPI](https://www.weatherapi.com/) and is built using React with Vite for fast development.
-
-## Features
-
-- **Search Functionality:** Users can search for any city to get weather details.
-- **Current Weather Display:** Shows temperature, weather description, and an appropriate weather icon.
-- **Hourly Forecast:** Displays hourly weather updates for the next 24 hours.
-- **Default City:** The app loads with the weather details of Sydney by default.
-- **Error Handling:** Displays a message when no results are found.
+•	Displays current weather (temperature, description, and weather icon).
+•	Shows hourly forecast for the next 24 hours.
+•	Allows users to search for weather data by city.
+•	Handles errors gracefully with a "No Results" message if the city is not found.
 
 ## Technologies Used
 
