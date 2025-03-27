@@ -7,13 +7,13 @@ This is a simple weather application built with React and Vite, which fetches an
 
 ## Features
 
--Displays current weather (temperature, description, and weather icon).
+1. Displays current weather (temperature, description, and weather icon).
    
--Shows hourly forecast for the next 24 hours.
+2. Shows hourly forecast for the next 24 hours.
  
--Allows users to search for weather data by city.
+3. Allows users to search for weather data by city.
  
--Handles errors gracefully with a "No Results" message if the city is not found.
+4. Handles errors gracefully with a "No Results" message if the city is not found.
 
 ## Technologies Used
 
